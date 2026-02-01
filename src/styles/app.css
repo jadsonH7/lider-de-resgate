@@ -1,0 +1,249 @@
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* ----- CABEÇALHO ----- */
+.app-header {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-logo {
+  width: 150px;
+}
+
+.app-logo img {
+  width: 100%;
+  object-fit: cover;
+  margin: -2rem;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* ----- LAYOUT DO FORMULÁRIO ----- */
+.app-form-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ----- CARDS DE SEÇÃO ----- */
+.section-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.section-card h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--fab-blue);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.section-card h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 1.25rem 0 0.75rem;
+}
+
+/* ----- GRUPOS DE CAMPOS ----- */
+.field-group {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.field-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field-item label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* ----- INPUTS BASE ----- */
+input[type="text"],
+input[type="time"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+input[type="text"]:focus,
+input[type="time"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--fab-blue);
+  box-shadow: 0 0 0 3px rgba(0, 58, 143, 0.1);
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: #9CA3AF;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ----- CHECKBOXES CUSTOMIZADOS ----- */
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+  cursor: pointer;
+}
+
+.checkbox-item:hover {
+  background-color: var(--background);
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--success);
+}
+
+.checkbox-item label {
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
+  flex: 1;
+}
+
+/* ----- BOTÕES ----- */
+.button-primary,
+.button-secondary {
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.button-primary {
+  background: var(--button-primary);
+  color: var(--text-inverse);
+}
+
+.button-primary:hover {
+  background: #A02020;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.button-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.button-secondary {
+  background: var(--button-secondary);
+  color: var(--text-inverse);
+}
+
+.button-secondary:hover {
+  background: #002D6F;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* ----- RODAPÉ ----- */
+.app-footer {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-top: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.app-footer p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0.25rem 0;
+}
+
+/* ----- ESTADOS DE FEEDBACK ----- */
+.field-error {
+  border-color: var(--error) !important;
+}
+
+.field-success {
+  border-color: var(--success) !important;
+}
+
+.message-error,
+.message-success,
+.message-info {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.message-error {
+  background: #FEE2E2;
+  color: var(--error);
+  border-left: 4px solid var(--error);
+}
+
+.message-success {
+  background: #D1FAE5;
+  color: var(--success);
+  border-left: 4px solid var(--success);
+}
+
+.message-info {
+  background: #DBEAFE;
+  color: var(--info);
+  border-left: 4px solid var(--info);
+}

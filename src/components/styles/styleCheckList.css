@@ -1,0 +1,130 @@
+.app-checklist-operacional {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+}
+
+/* ========================================
+   CABEÇALHO
+   ======================================== */
+
+.app-checklist-operacional h2 {
+  color: var(--fab-blue);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--fire-red);
+  letter-spacing: -0.02em;
+}
+
+/* ========================================
+   GRUPO DE CHECKBOXES
+   ======================================== */
+
+.app-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.app-checkbox-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.app-checkbox-item label {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background-color: var(--background);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  position: relative;
+}
+
+.app-checkbox-item label:hover {
+  border-color: var(--fab-blue);
+  background-color: #F8FAFC;
+  box-shadow: var(--shadow-sm);
+  transform: translateX(4px);
+}
+
+.app-checkbox-item label:active {
+  transform: translateX(2px);
+}
+
+/* ========================================
+   CHECKBOX CUSTOMIZADO
+   ======================================== */
+
+.app-checkbox-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-right: 1rem;
+  cursor: pointer;
+  position: relative;
+  background-color: var(--surface);
+  transition: all var(--transition-fast);
+}
+
+.app-checkbox-item input[type="checkbox"]:hover {
+  border-color: var(--fab-blue);
+}
+
+.app-checkbox-item input[type="checkbox"]:checked {
+  background-color: var(--success);
+  border-color: var(--success);
+}
+
+.app-checkbox-item input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 11px;
+  border: solid var(--text-inverse);
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+
+/* Estado checked no label */
+.app-checkbox-item label:has(input:checked) {
+  background-color: #E8F5E9;
+  border-color: var(--success);
+}
+
+.app-checkbox-item label:has(input:checked):hover {
+  background-color: #C8E6C9;
+}
+
+@keyframes checkmark {
+  0% {
+    transform: rotate(45deg) scale(0);
+  }
+  50% {
+    transform: rotate(45deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+.app-checkbox-item input[type="checkbox"]:checked::after {
+  animation: checkmark 0.3s ease;
+}

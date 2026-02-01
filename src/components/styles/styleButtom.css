@@ -1,0 +1,71 @@
+.app-buttom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.btn-saved {
+  /* Dimensões e espaçamento */
+  min-width: 180px;
+  padding: 0.875rem 2rem;
+  
+  /* Tipografia */
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  
+  /* Cores */
+  background-color: var(--button-primary);
+  color: var(--text-inverse);
+  border: 2px solid var(--button-primary);
+  
+  /* Forma */
+  border-radius: var(--radius-md);
+  
+  /* Visual */
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  
+  /* Transição */
+  transition: all var(--transition-base);
+  
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Hover */
+.btn-saved:hover:not(:disabled) {
+  background-color: #A01F1F;
+  border-color: #A01F1F;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Active */
+.btn-saved:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Focus */
+.btn-saved:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.2), var(--shadow-md);
+}
+
+/* Disabled */
+.btn-saved:disabled {
+  background-color: var(--button-disabled);
+  border-color: var(--button-disabled);
+  color: #6B7280;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.6;
+}

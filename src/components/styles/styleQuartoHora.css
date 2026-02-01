@@ -1,0 +1,128 @@
+.app-quarto-hora-form {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+}
+
+.app-quarto-hora-form h2 {
+  color: var(--fab-blue);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--fire-red);
+  letter-spacing: -0.02em;
+}
+
+/* ============================================
+   GRID RESPONSIVO
+   ============================================ */
+
+.app-quarto-hora-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+/* ============================================
+   ITEM DA EQUIPE
+   ============================================ */
+
+.app-quarto-hora-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.app-quarto-hora-item label {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.app-quarto-hora-item label::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: var(--fire-yellow);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+/* ============================================
+   INPUTS
+   ============================================ */
+
+.app-quarto-hora-item input[type="text"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background-color: var(--surface);
+  transition: all var(--transition-base);
+  outline: none;
+}
+
+.app-quarto-hora-item input[type="text"]::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.app-quarto-hora-item input[type="text"]:hover {
+  border-color: var(--fab-blue);
+}
+
+.app-quarto-hora-item input[type="text"]:focus {
+  border-color: var(--fire-red);
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
+  background-color: #FFFFFF;
+}
+
+.app-quarto-hora-item input[type="text"]:disabled {
+  background-color: var(--background);
+  border-color: var(--border);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ============================================
+   ESTADOS DE VALIDAÃƒÆ'Ã‚Ã‡ÃƒÆ'Ã‚ÃƒO
+   ============================================ */
+
+.app-quarto-hora-item input[type="text"]:valid:not(:placeholder-shown) {
+  border-color: var(--success);
+}
+
+.app-quarto-hora-item input[type="text"]:invalid:not(:placeholder-shown) {
+  border-color: var(--error);
+}
+
+
+@media print {
+  .app-quarto-hora-form {
+    box-shadow: none;
+    border: 1px solid var(--border);
+    page-break-inside: avoid;
+  }
+
+  .app-quarto-hora-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .app-quarto-hora-item input[type="text"] {
+    border: none;
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+  }
+}
