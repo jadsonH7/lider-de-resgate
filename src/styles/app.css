@@ -20,21 +20,50 @@
 }
 
 .app-logo {
-  width: 150px;
+  width: 90px;
 }
 
 .app-logo img {
   width: 100%;
   object-fit: cover;
-  margin: -2rem;
 }
 
-.app-header h1 {
+.app-title h1 {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--text-primary);
   margin: 0;
 }
+
+/* Titles Gerais */
+.app-checklist-operacional h2,
+.app-equipe-form h2,
+.app-faxina-copa-form h2,
+.app-faxina-geral-form h2,
+.app-quarto-hora-form h2,
+.app-ocorrencia-form h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--fire-red);
+}
+
+.app-title input {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  width: 100%;
+  max-width: 300px;
+}
+
+.app-title input:focus {
+  outline: none;
+  border-color: var(--fab-blue);
+  box-shadow: 0 0 0 3px rgba(0, 58, 143, 0.1);
+} 
 
 /* ----- LAYOUT DO FORMULÁRIO ----- */
 .app-form-layout {

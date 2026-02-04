@@ -9,7 +9,7 @@ export default function EquipeForm({ equipe, onChange }) {
             <label>{membro.posto}</label>
             <input
               type="text"
-              value={membro.nome}
+              value={membro.nome ?? ""}
               onChange={(e) => onChange(index, e.target.value)}
               placeholder={`Nome do ${membro.posto}`}
             />

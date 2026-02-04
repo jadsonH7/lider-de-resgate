@@ -18,7 +18,7 @@ export default function ChecklistOperacional({ checklist, onChange }) {
             <label>
               <input
                 type="checkbox"
-                checked={checklist[item.key]}
+                checked={checklist[item.key] ?? false}
                 onChange={() => onChange(item.key)}
               />
               {item.label}

@@ -11,10 +11,21 @@ import ButtomSave from './components/ButtomSave';
 import './styles/app.css';
 import './styles/appMobile.css';
 import './styles/appDesktop.css';
+import { salvarRegistroNoDrive } from './services/api.js';
 export default function App() {
   // Estado centralizado no componente pai
-  const [quartoHora, setQuartoHora] = useState({});
+  const [quartoHora, setQuartoHora] = useState({
+    1: "",
+    2: "",
+    3: "",
+    4: "",
+    5: "",
+    6: "",
+  });
+
   const [formData, setFormData] = useState({
+    dataServico: "",
+
     equipe: [
       { nome: '', posto: 'Chefe de Equipe' },
       { nome: '', posto: 'Líder de Resgate' },
@@ -50,10 +61,10 @@ export default function App() {
       abastecimentoViaturas: false,
       conferenciaCCI: false,
       conferenciaCRS: false,
-      testeSirene: false,
+      checkSirene: false,
     },
 
-    ocorrencias: '',
+    ocorrencias: ''
   });
   // Handlers para comunicação com os componentes filhos
   const handleEquipeChange = (index, value) => {
@@ -92,18 +103,30 @@ export default function App() {
     setFormData({ ...formData, ocorrencias: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const payload = {
-      ...formData,
+      dataServico: formData.dataServico,
+      equipe: formData.equipe,
       quartoHora,
+      faxinaCopa: formData.faxinaCopa,
+      faxinaGeral: formData.faxinaGeral,
+      checklistOperacional: formData.checklistOperacional,
+      ocorrencias: formData.ocorrencias
     };
 
-    console.log('Dados do registro:', payload);
-    alert('Registro salvo com sucesso!');
+    try {
+      await salvarRegistroNoDrive(payload);
+      alert("Registro salvo com sucesso no Google Drive!");
+    } catch (error) {
+      alert(`Erro ao salvar registro: ${error.message}`);
+    }
   };
 
+  const equipeCompleta = formData.equipe.every(
+    (membro) => membro.nome && membro.nome.trim() !== ""
+  );
 
   return (
     <section className="app-container">
@@ -111,51 +134,62 @@ export default function App() {
         <span className="app-logo">
           <img src="assets/logo/logo.png" alt="logo" />
         </span>
-        <h1>Serviço do Dia {new Date().toLocaleDateString('pt-BR')}</h1>
+        <span className="app-title">
+          <h1>Serviço do Dia </h1>
+          <input
+            type="date" value={formData.dataServico}
+            onChange={(e) => setFormData((prev) => ({ ...prev, dataServico: e.target.value }))}
+            required
+          />
+        </span>
       </div>
 
       <form onSubmit={handleSubmit} className="app-form-layout">
-        {/* Componente: Equipe Fixa */}
         <EquipeForm
           equipe={formData.equipe}
           onChange={handleEquipeChange}
         />
 
-        {/* Componente: Checklist Operacional */}
         <ChecklistOperacional
           checklist={formData.checklistOperacional}
           onChange={handleChecklistOperacionalChange}
         />
 
-        {/* Componente: Quarto de Hora */}
         <QuartoHoraForm
           equipe={formData.equipe.reduce((acc, member) => {
-            acc[member.posto.toLowerCase().replace(/ /g, '')] = member.nome;
+            acc[member.posto.toLowerCase().replace(/ /g, '')] = member.nome ?? '';
             return acc;
           }, {})}
           quartoHora={quartoHora}
           setQuartoHora={setQuartoHora}
+          disabled={!equipeCompleta}
         />
 
-        {/* Componente: Faxina da Copa */}
         <FaxinaCopaForm
+          equipe={formData.equipe.reduce((acc, member) => {
+            acc[member.posto.toLowerCase().replace(/ /g, '')] = member.nome;
+            return acc;
+          }, {})}
           faxinaCopa={formData.faxinaCopa}
           onChange={handleFaxinaCopaChange}
+          disabled={!formData.equipe.every(m => m.nome.trim() !== "")}
         />
 
-        {/* Componente: Faxina Geral */}
         <FaxinaGeralForm
           faxinaGeral={formData.faxinaGeral}
           onChange={handleFaxinaGeralChange}
+          equipe={formData.equipe.reduce((acc, member) => {
+            acc[member.posto.toLowerCase().replace(/ /g, '')] = member.nome ?? '';
+            return acc;
+          }, {})}
+          disabled={!equipeCompleta}
         />
 
-        {/* Componente: Ocorrências */}
         <OcorrenciaForm
           value={formData.ocorrencias}
           onChange={handleOcorrenciasChange}
         />
 
-        {/* Componente: Botão Salvar */}
         <ButtomSave />
       </form>
       <footer className="app-footer">

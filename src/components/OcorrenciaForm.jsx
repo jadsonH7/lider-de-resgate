@@ -4,7 +4,7 @@ export default function OcorrenciaForm({ value, onChange }) {
     <section className="app-ocorrencia-form">
       <h2>Ocorrências</h2>
       <textarea
-        value={value}
+        value={value ?? ''}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Descreva as ocorrências do serviço..."
         rows="6"
