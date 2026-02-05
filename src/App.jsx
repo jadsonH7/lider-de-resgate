@@ -113,6 +113,7 @@ export default function App() {
       faxinaCopa: formData.faxinaCopa,
       faxinaGeral: formData.faxinaGeral,
       checklistOperacional: formData.checklistOperacional,
+      checkSirene: formData.checklistOperacional.checkSirene,
       ocorrencias: formData.ocorrencias
     };
 
