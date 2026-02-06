@@ -103,23 +103,25 @@ export default function App() {
     setStatus({ loading: true, success: false, error: null });
 
     const payload = {
-      dataServico: formData.dataServico,
-      equipe: formData.equipe,
-      quartoHora,
-      faxinaCopa: formData.faxinaCopa,
-      faxinaGeral: formData.faxinaGeral,
-      checklistOperacional: formData.checklistOperacional,
-      ocorrencias: formData.ocorrencias
-    };
+  dataServico: formData.dataServico,
+  equipe: formData.equipe,
+  quartoHora,
+  faxinaCopa: formData.faxinaCopa,
+  faxinaGeral: formData.faxinaGeral,
+  checklistOperacional: {
+    ...formData.checklistOperacional,
+    equipeCompleta: equipeCompleta
+  },
+  ocorrencias: formData.ocorrencias
+};
 
     try {
-      const response = await salvarRegistroNoDrive(payload);
+      await salvarRegistroNoDrive(payload);
 
       setStatus({
         loading: false,
         success: true,
-        error: null,
-        pdfUrl: response.pdfUrl
+        error: null
       });
 
     } catch (error) {
