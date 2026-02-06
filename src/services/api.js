@@ -1,6 +1,6 @@
 export async function salvarRegistroNoDrive(payload) {
   await fetch(
-    "https://script.google.com/macros/s/AKfycbwZOLOP6SV9B-ALrGdvdzaIjl0MBUicT_4ClbnLE7TfRsODrQgEJtNL9GRM9ScrDXmhwA/exec",
+    "https://script.google.com/macros/s/AKfycbzXRPmvRV9io343uDYPTG9A7kKTtOuID-K6Lv8QGCSqodYGqBSzzbSZbJFdnio-XUvCUA/exec",
     {
       method: "POST",
       mode: "no-cors",
